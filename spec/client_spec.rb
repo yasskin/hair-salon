@@ -42,38 +42,33 @@ describe(Client) do
        expect(Client.all()).to(eq([]))
      end
    end
- #
- #   describe('#update') do
- #     it('lets you update cities in the database') do
- #       client = Client.new({:id => nil, :name => "Chicago"})
- #       client.save()
- #       client.update({:name => "Miami"})
- #       expect(client.name()).to(eq("Miami"))
- #     end
- #     it("lets you add a stylist to a client") do
- #       client = Client.new({:id => nil, :name => "Dallas"})
- #       client.save()
- #       stylist = Client.new({:id => nil, :name => "Thomas"})
- #       stylist.save()
- #       stylist2 = Client.new({:id => nil, :name => "The Little Engine that Could"})
- #       stylist2.save()
- #       client.update({:stylist_ids => [stylist.id(), stylist2.id()]})
- #       expect(client.stylists()).to(eq([stylist, stylist2]))
- #     end
- #   end
- #
- #   describe("#stylists") do
- #     it("returns all of the stylists for a particular client") do
- #       client = Client.new({:id => nil, :name => "Chicago"})
- #       client.save()
- #       stylist1 = Client.new({:id => nil, :name => "stylist Object"})
- #       stylist1.save()
- #       stylist2 = Client.new({:id => nil, :name => "stylist Class"})
- #       stylist2.save()
- #       client.update({:stylist_ids => [stylist1.id(), stylist2.id()]})
- #       expect(client.stylists()).to(eq([stylist1, stylist2]))
- #     end
- #   end
 
+   describe('#update') do
+     it('lets you update clients in the hair_salon database') do
+       client = Client.new({:id => nil, :name => "Finn"})
+       client.save()
+       client.update({:name => "Finn"})
+       expect(client.name()).to(eq("Finn"))
+     end
+    #  it("lets you add a stylist to a client") do
+    #    client = Client.new({:id => nil, :name => "Boba Fett"})
+    #    client.save()
+    #    stylist = Stylist.new({:id => nil, :name => "Chewbacca"})
+    #    stylist.save()
+    #    client.update({:stylist_id => [stylist.id()]})
+    #    expect(client.my_stylist()).to(eq([stylist]))
+    #  end
+   end
+
+  #  describe("#my_stylist") do
+  #    it("returns the stylist for a particular client") do
+  #      client = Client.new({:id => nil, :name => "Maz Kanata"})
+  #      client.save()
+  #      stylist = Stylist.new({:id => nil, :name => "Captain Phasma"})
+  #      stylist.save()
+  #      client.update({:stylist_id => [stylist.id()]})
+  #      expect(client.my_stylist()).to(eq([stylist]))
+  #    end
+  #  end
 
 end
