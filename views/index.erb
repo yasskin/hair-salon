@@ -1,3 +1,70 @@
 <div class="container">
+  <h1>Zohan Hair Salon</h1>
+  <h4>Zohan's Owner Dashboard</h4>
+  <hr>
 
+<div class="row">
+
+  <div class="col-md-3 col-md-offset-1">
+
+  <% if @stylists.any?() %>
+    <h3>Stylists:</h3>
+    <ul>
+      <% @stylists.each() do |stylist| %>
+        <li><a href="/stylist/<%= stylist.id()%>"> <%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+
+  <% else %>
+    <p>
+      There are no stylists yet!
+    </p>
+  <% end %>
+  <hr>
+</div>
+
+  <div class="col-md-3 col-md-offset-2">
+    <h3>Clients:</h3>
+
+    <% if @clients.any?() %>
+    <ul>
+      <% @clients.each() do |client| %>
+        <li> <a href="/client/<%= client.id()%>"><%= client.name() %></a> </li>
+      <% end %>
+    </ul>
+
+    <% else %>
+    <p>
+      There are no clients added.
+    </p>
+    <% end %>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <h3>Add a Stylist</h3>
+      <form class="form-group" action="/stylist" method="post">
+        <label for="name">stylist name</label>
+        <input class="form-control" type="text" name="name">
+        <button class="btn btn-primary" type="submit">Add Stylist</button>
+      </form>
+
+      <hr>
+    </div>
+
+
+  <div class="col-md-3 col-md-offset-2">
+    <h3>Add a client</h3>
+    <form class="form-group" action="/client_success" method="post">
+      <label for="client-name">client name</label>
+      <input class="form-control" type="text" name="client-name">
+      <button class="btn btn-primary" type="submit">Add Client</button>
+    </form>
+  </div>
+</div>
+
+
+<hr>
 </div>
