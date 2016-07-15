@@ -1,9 +1,9 @@
 require('rspec')
 require('pg')
-require('list')
-require('task')
+require('client')
+require('stylist')
 
-DB = PG.connect({:dbname => "hair_salon"})
+DB = PG.connect({:dbname => "hair_salon_test"})
 
 RSpec.configure do |config|
   config.after(:each) do
