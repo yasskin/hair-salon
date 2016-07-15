@@ -23,7 +23,7 @@ describe('display a list of stylists once they have been created', {:type => :fe
   # it('turns list item into a link that leads to a stylist page') do
   #   visit('/')
   #   fill_in('name', :with => 'Zohan')
-  #   click_button('Add stylist')
+  #   click_button('Add Stylist')
   #   click_link('Return to dashboard')
   #   click_link('Zohan')
   #   expect(page).to have_content('Delete Zohan')

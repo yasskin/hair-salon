@@ -11,7 +11,7 @@ describe(Client) do
  describe('#==') do
    it("shows a client as being equal to another client when they share the same id and name") do
      test_client1 = Client.new({:id => nil, :name => "Darth Vader"})
-     test_client2 = Client.new({:id => nil, :name => "C3PO"})
+     test_client2 = Client.new({:id => nil, :name => "Darth Vader"})
      expect(test_client1).to(eq(test_client2))
    end
  end

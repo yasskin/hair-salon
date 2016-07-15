@@ -36,10 +36,12 @@ describe(Stylist) do
 
   describe('#delete') do
     it('deletes a stylist from the database') do
-      test_stylist = Stylist.new({:id => nil, :name => "Dr. Bronner"})
-      test_stylist.save()
-      test_stylist.delete()
-      expect(Stylist.all()).to(eq([]))
+      stylist1 = Stylist.new({:id => nil, :name => "Dr. Bronner"})
+      stylist1.save()
+      stylist2 = Stylist.new({:id => nil, :name => "Dr. Oz"})
+      stylist2.save()
+      stylist1.delete()
+      expect(Stylist.all()).to(eq([stylist2]))
     end
   end
 
@@ -50,30 +52,18 @@ describe(Stylist) do
        stylist.update({:name => "Rails"})
        expect(stylist.name()).to(eq("Rails"))
      end
-    #  it("lets you add a client to a stylist") do
-    #    test_stylist = Stylist.new({:id => nil, :name => "Thomas"})
-    #    test_stylist.save()
-    #    test_client = Client.new({:id => nil, :name => "Walla Walla"})
-    #    test_client.save()
-    #    test_client_two = Client.new({:id => nil, :name => "Scapouse"})
-    #    test_client_two.save()
-    #    test_stylist.update({:client_ids => [test_client.id(), test_client_two.id()]})
-    #    expect(test_stylist.cities()).to(eq([test_client, test_client_two]))
-    #  end
-   end
 
-  #  describe("#clients") do
-  #      it("returns all of the clients for a particular stylist") do
-  #        test_stylist = Stylist.new({:id => nil, :name => "Zohan"})
-  #        test_stylist.save()
-  #        test_client1 = Client.new({:id => nil, :name => "Jack"})
-  #        test_client1.save()
-  #        test_client2 = Client.new({:id => nil, :name => "Jill"})
-  #        test_client2.save()
-  #        test_stylist.update({:client_ids => [test_client1.id(), test_client2.id()]})
-  #        expect(test_stylist.clients()).to(eq([test_client1, test_client2]))
-  #      end
-  #    end
-
+   describe("#clients") do
+     it("returns all of the clients for a particular stylist") do
+       stylist = Stylist.new({:id => nil, :name => "Zohan"})
+       stylist.save()
+       client1 = Client.new({:id => nil, :name => "Jack"})
+       client1.save()
+       client2 = Client.new({:id => nil, :name => "Jill"})
+       client2.save()
+       expect(stylist.clients()).to(eq([client1, client2]))
+     end
+    end
+  end
 
 end

@@ -15,14 +15,14 @@ end
 
 get('/stylist/:id') do
   @stylist = Stylist.find(params.fetch('id').to_i())
-  @client = Clients.all()
+  @client = Client.all()
   erb(:stylist)
 end
 
 post('/stylist') do
   @name = params.fetch('name')
-  train = Stylist.new({:name => @name})
-  train.save()
+  stylist = Stylist.new({:name => @name})
+  stylist.save()
   erb(:stylist_success)
 end
 
