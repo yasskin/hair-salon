@@ -24,15 +24,15 @@ describe(Client) do
      end
    end
 
- #   describe('.find') do
- #     it('returns a client by an id') do
- #       test_client1 = Client.new({:id => nil, :name => "Rome"})
- #       test_client2 = Client.new({:id => nil, :name => "Addis Ababa"})
- #       test_client1.save()
- #       test_client2.save()
- #       expect(Client.find(test_client2.id())).to(eq(test_client2))
- #     end
- #   end
+   describe('.find') do
+     it('returns a client by an id') do
+       test_client1 = Client.new({:id => nil, :name => "Yoda"})
+       test_client2 = Client.new({:id => nil, :name => "Princess Leia"})
+       test_client1.save()
+       test_client2.save()
+       expect(Client.find(test_client2.id())).to(eq(test_client2))
+     end
+   end
  #
  #   describe('#delete') do
  #     it('deletes a client from the database') do

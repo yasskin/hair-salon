@@ -29,6 +29,12 @@ class Client
      @id = result.first().fetch("id").to_i()
    end
 
+   define_singleton_method(:find) do |id|
+     result = DB.exec("SELECT * FROM clients WHERE id = #{id};")
+     name = result.first().fetch("name")
+     Client.new({:id => id, :name => name})
+    end
+
 
 
 end
