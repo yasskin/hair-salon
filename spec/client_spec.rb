@@ -33,15 +33,15 @@ describe(Client) do
        expect(Client.find(test_client2.id())).to(eq(test_client2))
      end
    end
- #
- #   describe('#delete') do
- #     it('deletes a client from the database') do
- #       test_client = Client.new({:id => nil, :name => "Paris"})
- #       test_client.save()
- #       test_client.delete()
- #       expect(Client.all()).to(eq([]))
- #     end
- #   end
+
+   describe('#delete') do
+     it('deletes a client from the hair_salon database') do
+       test_client = Client.new({:id => nil, :name => "Padmé Amidala"})
+       test_client.save()
+       test_client.delete()
+       expect(Client.all()).to(eq([]))
+     end
+   end
  #
  #   describe('#update') do
  #     it('lets you update cities in the database') do
