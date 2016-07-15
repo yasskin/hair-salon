@@ -40,7 +40,7 @@ _In PSQL_
 1. CREATE DATABASE hair_salon;
 2. \c hair_salon
 2. CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
-3. CREATE TABLE clients (id serial PRIMARY KEY, name varchar);
+3. CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
 4. CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 
 ## RESTful Routing

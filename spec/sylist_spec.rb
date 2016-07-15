@@ -43,6 +43,24 @@ describe(Stylist) do
     end
   end
 
+  describe('#update') do
+     it("lets you update stylists in the database") do
+       stylist = Stylist.new({:id => nil, :name => "Ruby"})
+       stylist.save()
+       stylist.update({:name => "Rails"})
+       expect(stylist.name()).to(eq("Rails"))
+     end
+    #  it("lets you add a client to a stylist") do
+    #    test_stylist = Stylist.new({:id => nil, :name => "Thomas"})
+    #    test_stylist.save()
+    #    test_client = Client.new({:id => nil, :name => "Walla Walla"})
+    #    test_client.save()
+    #    test_client_two = Client.new({:id => nil, :name => "Scapouse"})
+    #    test_client_two.save()
+    #    test_stylist.update({:client_ids => [test_client.id(), test_client_two.id()]})
+    #    expect(test_stylist.cities()).to(eq([test_client, test_client_two]))
+    #  end
+   end
 
 
 end
