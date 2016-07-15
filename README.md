@@ -18,8 +18,8 @@ _It uses RESTful routes._
 * As a salon owner, I want to view, add, update and delete clients.
 * As a salon owner, I want to add clients to a stylist.
 
-* _For a full description of the challenge, see Epicodus Project guidelines:_
-[https://www.learnhowtoprogram.com/ruby/ruby-database-basics/database-basics-independent-project]
+* For a full description of the challenge, see [Epicodus Project guidelines:]
+(https://www.learnhowtoprogram.com/ruby/ruby-database-basics/database-basics-independent-project)
 
 ## Setup/Installation Requirements
 
@@ -43,11 +43,18 @@ _In PSQL_
 
 ## RESTful Routing
 
-| Behavior      | Route (URL)| Method| App.rb Example | Process
-| ------------- |---------------| ------|
-| Homepage      |     | tk |
-| /stylist      |       |   tk |
-| zebra stripes |       |    $1 |
+### Behavior	Route (URL)	Method	App.rb Example	Process
+Homepage	/	GET	get('/') do erb(:index) end	User requests page. The server renders the Index template back
+
+List all stylists	/	GET	get('/') do @stylists = Stylist.all erb(:index) end	User request page. The server collects all the stylists and returns a page to display them
+
+List all clients	/	GET	get('/') do @clients = Client.all erb(:index) end	User request page. The server collects all the clients and returns a page to display them
+
+Show/Read a single stylist	/stylist/:id	GET	get('/stylist/:id') do @stylist = Stylist.find(params.fetch('id'),to_i) @clients = Clients.all() erb(:stylist) end	User requests to look at a single instance of a stylist. The server uses the stylist's unique id to find her or him and returns a page to display the stylist selected
+
+New stylist form	/stylist_new	GET	get('/stylist/new') do erb(:stylist_new) end	User requests to create a new stylist. The server returns a page with a form that will let the user create a new stylist.
+
+Create a new stylist when the form is submitted	/stylist	POST	post('/stylist') do name = params.fetch('name') @stylist = Stylist.new(name) @stylist.save() Client.find(params.fetch('client_id).to_i()) @stylist.add_client(@client) erb(:success) end	User clicks "Add Stylist" and is taken to the stylist form page to view details and add clients
 
 
 ## Known Bugs
