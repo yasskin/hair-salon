@@ -51,3 +51,11 @@ patch('/stylists/:id') do
   @clients = Client.all()
   erb(:stylist)
 end
+
+delete("/stylists/:id") do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  @stylist.delete()
+  @stylists = Stylist.all()
+  @clients = Client.all()
+  erb(:stylists)
+end

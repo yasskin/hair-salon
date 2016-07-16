@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-2">
+      <h1>Zohan Hair Salon: Stylist Dashboard</h1>
+      <hr>
       <h1>Stylist Page: <%= @stylist.name() %></h1>
       <hr>
       <h1><%= @stylist.name() %>'s' Clients</h1>
@@ -25,14 +27,20 @@
        </form>
       <br>
       <hr>
-      <h4>Rename: <%= @stylist.name() %></h4>
+      <h4>Update Stylist Name: <%= @stylist.name() %></h4>
         <form action="/stylists/<%= @stylist.id() %>" method="post">
           <input name="_method" type="hidden" value="patch">
           <label for="new_name">New Name:</label>
           <input id="new_name" name="new_name" type="text" required>
           <button type="submit">Update</button>
       </form>
-
+      <br>
+        <h4>Fire Stylist: <%= @stylist.name() %></h4>
+        <form action="/stylists/<%= @stylist.id() %>" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit" class="btn btn-danger">Delete Stylist</button>
+        </form>
+        <hr>
 
       <a href="/">Home</a>
     </div>
