@@ -52,18 +52,18 @@ describe(Stylist) do
        stylist.update({:name => "Rails"})
        expect(stylist.name()).to(eq("Rails"))
      end
+   end
 
-   describe("#clients") do
-     it("returns all of the clients for a particular stylist") do
-       stylist = Stylist.new({:id => nil, :name => "Zohan"})
-       stylist.save()
-       client1 = Client.new({:id => nil, :name => "Jack"})
-       client1.save()
-       client2 = Client.new({:id => nil, :name => "Jill"})
-       client2.save()
-       expect(stylist.clients()).to(eq([client1, client2]))
-     end
-    end
+ describe("#clients") do
+   it("returns all of the clients assigned to a particular stylist") do
+     stylist = Stylist.new({:id => nil, :name => "Zohan"})
+     stylist.save()
+     client1 = Client.new({:id => nil, :name => "Jack", :stylist_id => stylist.id()})
+     client1.save()
+     client2 = Client.new({:id => nil, :name => "Jill", :stylist_id => stylist.id()})
+     client2.save()
+     expect(stylist.clients()).to(eq([client1, client2]))
+   end
   end
 
 end

@@ -4,7 +4,7 @@ class Stylist
   attr_reader(:id, :name)
 
   define_method(:initialize) do |attributes|
-    @id = attributes[:id]
+    @id = attributes.fetch(:id)
     @name = attributes.fetch(:name)
   end
 
@@ -43,8 +43,8 @@ class Stylist
   end
 
   define_method(:update) do |attributes|
-    @name = attributes.fetch(:name, @name)
     @id = self.id()
+    @name = attributes.fetch(:name)
     DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{self.id()}")
   end
 

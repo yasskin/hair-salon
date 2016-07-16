@@ -3,32 +3,32 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('adding a stylist', {:type => :feature}) do
-  it('adds a stylist to the list of stylists') do
-    visit('/')
-    fill_in('name', :with => 'Zohan')
-    click_button('Add Stylist')
-    expect(page).to have_content('Success!')
-  end
-end
-
-describe('display a list of stylists once they have been created', {:type => :feature}) do
-  it('reads back a list of stylists') do
-  visit('/')
-  fill_in('name', :with => 'Zohan')
-  click_button('Add Stylist')
-  click_link('Return to dashboard')
-  expect(page).to have_content('Zohan')
-  end
-  # it('turns list item into a link that leads to a stylist page') do
-  #   visit('/')
-  #   fill_in('name', :with => 'Zohan')
-  #   click_button('Add Stylist')
-  #   click_link('Return to dashboard')
-  #   click_link('Zohan')
-  #   expect(page).to have_content('Delete Zohan')
-  # end
-end
+# describe('adding a stylist', {:type => :feature}) do
+#   it('adds a stylist to the list of stylists') do
+#     visit('/')
+#     fill_in('name', :with => 'Zohan')
+#     click_button('Add Stylist')
+#     expect(page).to have_content('Success!')
+#   end
+# end
+#
+# describe('display a list of stylists once they have been created', {:type => :feature}) do
+#   it('reads back a list of stylists') do
+#   visit('/')
+#   fill_in('name', :with => 'Zohan')
+#   click_button('Add Stylist')
+#   click_link('Return to dashboard')
+#   expect(page).to have_content('Zohan')
+#   end
+#   # it('turns list item into a link that leads to a stylist page') do
+#   #   visit('/')
+#   #   fill_in('name', :with => 'Zohan')
+#   #   click_button('Add Stylist')
+#   #   click_link('Return to dashboard')
+#   #   click_link('Zohan')
+#   #   expect(page).to have_content('Delete Zohan')
+#   # end
+# end
 #
 # describe('allows user to delete a stylist they have added', {:type => :feature}) do
 #   it('adds a stylist to the list of stylists, then deletes it') do
