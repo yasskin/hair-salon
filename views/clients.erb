@@ -1,0 +1,42 @@
+<h1>Zohan Hair Salon: Stylists Dashboard</h1>
+  <hr>
+  <% if @stylists.any?() %>
+     <h1>All My Glorious Clients</h1>
+     <hr>
+     <h3>View and Update Clients</h3>
+  <% if @clients.any?() %>
+     <ul>
+       <% @clients.each() do |client| %>
+         <li><%= client.name() %></li>
+       <% end %>
+     </ul>
+   <% else %>
+     <p>No clients yet</p>
+   <% end %>
+   <hr>
+   <br>
+   <h3>Add New Client:</h3>
+   <form action="/clients" method="post">
+     <label for="client-name">Client Name</label>
+     <input id="client-name" name="client-name" type="text" required>
+     <label for="stylist_id">Select a Stylist</label>
+       <select id='stylist_id' name='stylist_id' type='text' required>
+         <% @stylists.each() do |stylist| %>
+           <option value="<%= stylist.id()%>"> <%= stylist.name() %></option>
+         <% end %>
+       </select>
+     <button type="submit">Add Client</button>
+   </form>
+
+   <hr>
+   <br>
+   <% else %>
+      <p>In order to add clients, we first need stylists: <a href="/stylists">Add a Stylist</a></p>
+      <% end %>
+
+      <h3>Add New Stylist:</h3>
+
+<a href="/stylists">Add a Stylist</a></p>
+
+      <br>
+      <a href="/">Homepage</a>

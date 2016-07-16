@@ -3,7 +3,7 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('adding a stylist to Zohan Salon', {:type => :feature}) do
+describe('adds a stylist to Zohan Salon', {:type => :feature}) do
   it('adds a stylist to the list of stylists') do
     visit('/')
     click_link('Stylists')
@@ -13,14 +13,14 @@ describe('adding a stylist to Zohan Salon', {:type => :feature}) do
   end
 end
 
-describe('display a stylist page when Zohan clicks on a stylist name', {:type => :feature}) do
+describe('displays a stylist page when Zohan clicks on a stylist name', {:type => :feature}) do
   it('lists stylist and provides a link to a stylist page') do
     visit('/')
     click_link('Stylists')
     fill_in('stylist-name', :with => 'Vidal')
     click_button('Add Stylist')
     click_link('Vidal')
-    expect(page).to have_content('Add a client for Vidal')
+    expect(page).to have_content('Add a Client for Vidal')
   end
 end
 
@@ -37,7 +37,7 @@ describe('adding a client to Zohan Salon', {:type => :feature}) do
   end
 end
 
-describe('allows Zohan to change the name of a stylist they have added', {:type => :feature}) do
+describe('allows Zohan to change the name of a stylist he added', {:type => :feature}) do
   it('adds a stylist to the list of stylists, then deletes it') do
     visit('/')
     click_link('Stylists')
@@ -50,7 +50,7 @@ describe('allows Zohan to change the name of a stylist they have added', {:type 
   end
 end
 
-describe('allows Zohan to delete a stylist they have added', {:type => :feature}) do
+describe('allows Zohan to delete a stylist he added', {:type => :feature}) do
   it('adds a stylist to the list of stylists, then deletes it') do
     visit('/')
     click_link('Stylists')
@@ -59,5 +59,20 @@ describe('allows Zohan to delete a stylist they have added', {:type => :feature}
     click_link('Noah')
     click_button('Delete')
     expect(page).to have_no_content('Noah')
+  end
+end
+
+describe('allows Zohan to change the name of a client', {:type => :feature}) do
+  it('adds a stylist to the list of stylists, then deletes it') do
+    visit('/')
+    click_link('Stylists')
+    fill_in('stylist-name', :with => 'Gal')
+    click_button('Add Stylist')
+    click_link('Gal')
+    fill_in('client-name', :with => "Gui")
+    click_button('Add Client')
+    visit('/')
+    click_link('My Clients')
+    expect(page).to have_content('Gui')
   end
 end

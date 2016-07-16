@@ -1,48 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-2">
-      <h1>Zohan Hair Salon: Stylist Dashboard</h1>
-      <hr>
-      <h1>Stylist Page: <%= @stylist.name() %></h1>
-      <hr>
-      <h1><%= @stylist.name() %>'s' Clients</h1>
-        <% if @stylist.clients().any?() %>
-          <h3>Name</h3>
-          <ul>
-            <% @stylist.clients().each() do |client| %>
-            <li><%= client.name() %></li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>There are no clients for this stylist.</p>
-        <% end %>
-      <br>
-      <hr>
-      <h4>Add a client for <%= @stylist.name() %></h4>
-       <form action="/stylists/<%=@stylist.id() %>" method="post">
-         <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
-         <label for="client-name">Client Name</label>
-         <input id="client-name" name="client-name" type="text">
-         <button type="submit">Add Client</button>
-       </form>
-      <br>
-      <hr>
-      <h4>Update Stylist Name: <%= @stylist.name() %></h4>
-        <form action="/stylists/<%= @stylist.id() %>" method="post">
-          <input name="_method" type="hidden" value="patch">
-          <label for="new_name">New Name:</label>
-          <input id="new_name" name="new_name" type="text" required>
-          <button type="submit">Update</button>
-      </form>
-      <br>
-        <h4>Fire Stylist: <%= @stylist.name() %></h4>
-        <form action="/stylists/<%= @stylist.id() %>" method="post">
-          <input name="_method" type="hidden" value="delete">
-          <button type="submit" class="btn btn-danger">Delete Stylist</button>
-        </form>
-        <hr>
-
-      <a href="/">Home</a>
-    </div>
-  </div>
-</div>
+<h1>Zohan Hair Salon: Stylist Dashboard</h1>
+  <hr>
+<h1>Stylist Page: <%= @stylist.name() %></h1>
+  <hr>
+<h1><%= @stylist.name() %>'s' Clients</h1>
+  <% if @stylist.clients().any?() %>
+    <h3>Name</h3>
+    <ul>
+      <% @stylist.clients().each() do |client| %>
+      <li><%= client.name() %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no clients for this stylist.</p>
+  <% end %>
+  <br>
+  <hr>
+<h4>Add a Client for <%= @stylist.name() %></h4>
+ <form action="/stylists/<%=@stylist.id() %>" method="post">
+   <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+   <label for="client-name">Client Name</label>
+   <input id="client-name" name="client-name" type="text">
+   <button type="submit">Add Client</button>
+ </form>
+ <br>
+ <hr>
+<h4>Update Stylist Name: <%= @stylist.name() %></h4>
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <label for="new_name">New Name:</label>
+    <input id="new_name" name="new_name" type="text" required>
+    <button type="submit">Update</button>
+  </form>
+  <br>
+<h4>Fire Stylist: <%= @stylist.name() %></h4>
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-danger">Delete Stylist</button>
+  </form>
+  <hr>
+<a href="/">Home</a>
