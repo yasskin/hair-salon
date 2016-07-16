@@ -19,10 +19,16 @@ get('/stylist/:id') do
   erb(:stylist)
 end
 
-post('/stylist') do
-  @name = params.fetch('name')
-  stylist = Stylist.new({:name => @name})
+get('stylist_success') do
+  @stylists = Stylist.all()
+  erb(:stylist_success)
+end
+
+post('/stylist_success') do
+  @name = params.fetch('stylist-name')
+  stylist = Stylist.new({:id => nil, :name => @name})
   stylist.save()
+  @stylists = Stylist.all()
   erb(:stylist_success)
 end
 

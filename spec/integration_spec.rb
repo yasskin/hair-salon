@@ -3,15 +3,15 @@ require('./app')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-# describe('adding a stylist', {:type => :feature}) do
-#   it('adds a stylist to the list of stylists') do
-#     visit('/')
-#     fill_in('name', :with => 'Zohan')
-#     click_button('Add Stylist')
-#     expect(page).to have_content('Success!')
-#   end
-# end
-#
+describe('adding a stylist', {:type => :feature}) do
+  it('adds a stylist to the list of stylists') do
+    visit('/')
+    fill_in('stylist-name', :with => 'Zohan')
+    click_button('Add Stylist')
+    expect(page). to have_content('Success!')
+  end
+end
+
 # describe('display a list of stylists once they have been created', {:type => :feature}) do
 #   it('reads back a list of stylists') do
 #   visit('/')
