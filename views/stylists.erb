@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Stylists Page</h1>
+  <hr>
+
+  <h5>Update Information For Stylists<h5>
+
+  <% if @stylists.any?() %>
+    <ul>
+      <% @stylists.each() do |stylist| %>
+        <li><a href="/stylists/<%= stylist.id()%>"><%= stylist.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No stylists yet</p>
+  <% end %>
+
+  <hr>
+  <br>
+
+  <h3>Add a New Stylist:</h3>
+  <form action="/stylists" method="post">
+    <label for="stylist-name">Stylist Name</label>
+    <input id="stylist-name" name="stylist-name" type="text">
+    <button type="submit">Add Stylist</button>
+  </form>
+  <hr>
+
+
+  <a href="/">Homepage</a>
+</div>

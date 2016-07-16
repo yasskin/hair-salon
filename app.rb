@@ -9,25 +9,36 @@ DB = PG.connect({:dbname => 'hair_salon_test'})
 
 get('/') do
   @stylists = Stylist.all()
-  @clients = Client.all()
   erb(:index)
 end
 
-get('/stylist_success') do
+get('/stylists') do
   @stylists = Stylist.all()
-  erb(:stylist_success)
+  erb(:stylists)
 end
 
-post('/stylist_success') do
-  @name = params.fetch('stylist-name')
-  stylist = Stylist.new({:id => nil, :name => @name})
+get('/stylists/:id') do
+  @stylists = Stylist.all()
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  @clients = Client.all()
+  erb(:stylist)
+end
+
+post('/stylists') do
+  name = params.fetch('stylist-name')
+  stylist = Stylist.new({:id => nil, :name => name})
   stylist.save()
   @stylists = Stylist.all()
-  erb(:stylist_success)
+  erb(:stylists)
 end
 
-get('/stylist/:id') do
-  @stylist = Stylist.find(params.fetch('id').to_i())
+post('/stylists/:id') do
+  name = params.fetch('stylist_client')
+  stylist_id = params.fetch('stylist_id')
+  client = Client.new({:id => nil, :name => name, :stylist_id => stylist_id})
+  client.save()
+  @stylist = Stylist.find(params.fetch("id").to_i())
   @clients = Client.all()
+  @stylists = Stylist.all()
   erb(:stylist)
 end

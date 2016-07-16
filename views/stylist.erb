@@ -1,61 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h1>Stylist Page</h1>
-      <h3>Stylist details: <%= @stylist.name() %></h3>
-
+    <div class="col-md-6 col-md-offset-2">
+      <h1>Stylist Page: <%= @stylist.name() %></h1>
       <hr>
-    </div>
-    <div class="col-md-3 col-md-offset-2">
-      <h1>STYLIST CLIENTS</h1>
-      <% if @stylist.clients().any?() %>
-      <h3>Clients</h3>
-
-      <ul>
-        <% @stylist.clients().each() do |client| %>
-        <li><%= client.name() %></li>
+      <h1><%= @stylist.name() %>'s' Clients</h1>
+        <% if @stylist.clients().any?() %>
+          <h3>Name</h3>
+          <ul>
+            <% @stylist.clients().each() do |client| %>
+            <li><%= client.name() %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>There are no clients for this stylist.</p>
         <% end %>
-      </ul>
-      <% else %>
-      <p>There are no clients for this stylist.</p>
-      <% end %>
-
       <hr>
-
-    <h3>Add Client</h3>
-      <form class="form-group" action="/client_success" method="post">
-        <label for="client-name">client name</label>
-        <input class="form-control" type="text" name="client-name">
-        <button class="btn btn-primary" type="submit">Add Client</button>
-      </form>
-
-
-    <h3>clients:</h3>
-      <% if @clients.any?() %>
-      <form action='/stylist/<%= @stylist.id %>' method="post">
-        <input type="hidden" name="_method" value="patch">
-
-        <% @clients.each() do |client|%>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="client_ids[]" value="<%= client.id()%>"><%= client.name()%>
-          </label>
-        </div>
-        <% end %>
-
-        <button type="submit">Add clients</button>
-      </form>
-      <% end %>
-
+      <h4>Add a client for <%= @stylist.name() %></h4>
+       <form action="/stylists/<%=@stylist.id() %>" method="post">
+         <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+         <label for="stylist_client">Client Name</label>
+         <input id="stylist_client" name="stylist_client" type="text">
+         <button type="submit">Add Client</button>
+       </form>
+      <br>
       <hr>
-      <a href="/">Return to dashboard</a>
-      <hr>
-
-      <form class="form-group" action="/stylist/<%= @stylist.id() %>" method="post">
-        <input class="form-control" type="hidden" name="_method" value="delete">
-        <button class="btn btn-danger" type="submit">Delete <%= @stylist.name() %></button>
-      </form>
-
+      <a href="/">Home</a>
     </div>
   </div>
 </div>
