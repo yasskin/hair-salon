@@ -13,13 +13,7 @@ get('/') do
   erb(:index)
 end
 
-get('/stylist/:id') do
-  @stylist = Stylist.find(params.fetch('id').to_i())
-  @client = Client.all()
-  erb(:stylist)
-end
-
-get('stylist_success') do
+get('/stylist_success') do
   @stylists = Stylist.all()
   erb(:stylist_success)
 end
@@ -33,5 +27,7 @@ post('/stylist_success') do
 end
 
 get('/stylist/:id') do
-
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @clients = Client.all()
+  erb(:stylist)
 end
