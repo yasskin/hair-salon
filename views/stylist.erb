@@ -19,8 +19,8 @@
       <h4>Add a client for <%= @stylist.name() %></h4>
        <form action="/stylists/<%=@stylist.id() %>" method="post">
          <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
-         <label for="stylist_client">Client Name</label>
-         <input id="stylist_client" name="stylist_client" type="text">
+         <label for="client-name">Client Name</label>
+         <input id="client-name" name="client-name" type="text">
          <button type="submit">Add Client</button>
        </form>
       <br>
@@ -33,7 +33,7 @@
           <button type="submit">Update</button>
       </form>
 
-      
+
       <a href="/">Home</a>
     </div>
   </div>

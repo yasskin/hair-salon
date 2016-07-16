@@ -28,8 +28,8 @@ describe('adding a client', {:type => :feature}) do
   it('adds a client to a Stylist') do
     visit('/')
     click_link('Stylists')
-    fill_in('name', :with => 'Gal')
-    click_button('Add stylist')
+    fill_in('stylist-name', :with => 'Gal')
+    click_button('Add Stylist')
     click_link('Gal')
     fill_in('client-name', :with => "Guy")
     click_button('Add Client')
@@ -37,18 +37,15 @@ describe('adding a client', {:type => :feature}) do
   end
 end
 
-# describe('allows user to delete a stylist they have added', {:type => :feature}) do
-#   it('adds a stylist to the list of stylists, then deletes it') do
-#     visit('/')
-#     fill_in('name', :with => 'Zohan')
-#     click_button('Add stylist')
-#     click_link('Return to dashboard')
-#     fill_in('name', :with => 'Freight')
-#     click_button('Add stylist')
-#     click_link('Return to dashboard')
-#     click_link('Zohan')
-#     click_button('Delete Zohan')
-#     expect(page).to have_no_content('Zohan')
-#   end
-# end
-#
+describe('allows user to change the name of a stylist they have added', {:type => :feature}) do
+  it('adds a stylist to the list of stylists, then deletes it') do
+    visit('/')
+    click_link('Stylists')
+    fill_in('stylist-name', :with => 'Jilll')
+    click_button('Add Stylist')
+    click_link('Jilll')
+    expect(page).to have_content('Jill')
+    fill_in('new_name', :with => 'Jill')
+    expect(page).to have_content('Jill')
+  end
+end

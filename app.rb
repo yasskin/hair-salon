@@ -33,7 +33,7 @@ post('/stylists') do
 end
 
 post('/stylists/:id') do
-  name = params.fetch('stylist_client')
+  name = params.fetch('client-name')
   stylist_id = params.fetch('stylist_id')
   client = Client.new({:id => nil, :name => name, :stylist_id => stylist_id})
   client.save()
