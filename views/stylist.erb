@@ -14,6 +14,7 @@
         <% else %>
           <p>There are no clients for this stylist.</p>
         <% end %>
+      <br>
       <hr>
       <h4>Add a client for <%= @stylist.name() %></h4>
        <form action="/stylists/<%=@stylist.id() %>" method="post">
@@ -24,6 +25,15 @@
        </form>
       <br>
       <hr>
+      <h4>Rename: <%= @stylist.name() %></h4>
+        <form action="/stylists/<%= @stylist.id() %>" method="post">
+          <input name="_method" type="hidden" value="patch">
+          <label for="new_name">New Name:</label>
+          <input id="new_name" name="new_name" type="text" required>
+          <button type="submit">Update</button>
+      </form>
+
+      
       <a href="/">Home</a>
     </div>
   </div>
